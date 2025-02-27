@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت - نواهوش</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #0A192F; color: white; padding: 20px; }
+        h1 { color: #64FFDA; }
+        .container { max-width: 800px; margin: auto; }
+        input, button { padding: 10px; margin: 5px; width: 80%; }
+        .content-box { background: #112240; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>پنل مدیریت</h1>
+        <p>محتوای جدید را اضافه یا ویرایش کنید.</p>
+
+        <div class="content-box">
+            <h3>اضافه کردن آموزش جدید</h3>
+            <input type="text" id="title" placeholder="عنوان آموزش">
+            <textarea id="content" placeholder="متن آموزش"></textarea>
+            <button onclick="addLesson()">اضافه کردن</button>
+        </div>
+
+        <div class="content-box">
+            <h3>مدیریت لینک‌ها</h3>
+            <input type="text" id="linkText" placeholder="عنوان لینک">
+            <input type="text" id="linkURL" placeholder="آدرس لینک">
+            <button onclick="addLink()">اضافه کردن لینک</button>
+        </div>
+
+        <p><a href="index.html" style="color: #64FFDA;">بازگشت به صفحه اصلی</a></p>
+    </div>
+
+    <script>
+        function addLesson() {
+            let title = document.getElementById("title").value;
+            let content = document.getElementById("content").value;
+            if (title && content) {
+                alert("آموزش جدید اضافه شد: " + title);
+                // اینجا می‌توان داده را به دیتابیس ارسال کرد.
+            } else {
+                alert("لطفاً عنوان و متن آموزش را وارد کنید.");
+            }
+        }
+
+        function addLink() {
+            let text = document.getElementById("linkText").value;
+            let url = document.getElementById("linkURL").value;
+            if (text && url) {
+                alert("لینک جدید اضافه شد: " + text);
+                // اینجا می‌توان لینک را ذخیره کرد.
+            } else {
+                alert("لطفاً عنوان و آدرس لینک را وارد کنید.");
+            }
+        }
+    </script>
+</body>
+</html>
