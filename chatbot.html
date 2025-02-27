@@ -3,50 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ربات پرسان - نواهوش</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #0A192F; color: white; padding: 20px; }
-        h1 { color: #64FFDA; }
-        .chat-container { max-width: 600px; margin: auto; background: #112240; padding: 15px; border-radius: 10px; }
-        .chat-box { height: 300px; overflow-y: scroll; background: #0A1E30; padding: 10px; border-radius: 5px; text-align: left; }
-        .input-box { width: 80%; padding: 10px; margin-top: 10px; }
-        .send-btn { padding: 10px; background: #64FFDA; border: none; cursor: pointer; }
-    </style>
-</head>
-<body>
-    <div class="chat-container">
-        <h1>ربات پرسان</h1>
-        <div class="chat-box" id="chat-box"></div>
-        <input type="text" class="input-box" id="user-input" placeholder="سوال خود را بپرسید...">
-        <button class="send-btn" onclick="sendMessage()">ارسال</button>
-    </div>
-
-    <script>
-        function sendMessage() {
-            let userText = document.getElementById("user-input").value;
-            let chatBox = document.getElementById("chat-box");
-
-            if (userText.trim() === "") return;
-
-            // نمایش پیام کاربر
-            chatBox.innerHTML += "<p><strong>شما:</strong> " + userText + "</p>";
-
-            // تولید پاسخ خودکار
-            let response = getBotResponse(userText);
-            chatBox.innerHTML += "<p><strong>پرسان:</strong> " + response + "</p>";
-
-            document.getElementById("user-input").value = "";
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        function getBotResponse(input) {
-            input = input.toLowerCase();
-
-            let responses = {
-                "سلام": "سلام! چطور می‌توانم کمکتان کنم؟",
-                "هوش مصنوعی چیست؟": "هوش مصنوعی شاخه‌ای از علوم کامپیوتر است که به ایجاد ماشین‌هایی با قابلیت یادگیری و تصمیم‌گیری می‌پردازد.",
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ربات پرسان - چت‌بات هوش مصنوعی</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; background-color: #0A192F; color: white; padding: 20px; }
