@@ -52,6 +52,58 @@
 
             return responses[input] || "متاسفم، متوجه نشدم. لطفاً سوال خود را دقیق‌تر بپرسید.";
         }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ربات پرسان - چت‌بات هوش مصنوعی</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #0A192F; color: white; padding: 20px; }
+        h1 { color: #64FFDA; }
+        .chat-container { max-width: 600px; margin: auto; background: #112240; padding: 15px; border-radius: 10px; }
+        .chat-box { height: 300px; overflow-y: scroll; background: #0A1E30; padding: 10px; border-radius: 5px; text-align: left; }
+        .input-box { width: 80%; padding: 10px; margin-top: 10px; }
+        .send-btn { padding: 10px; background: #64FFDA; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>ربات پرسان</h1>
+        <div class="chat-box" id="chat-box"></div>
+        <input type="text" class="input-box" id="user-input" placeholder="سوال خود را بپرسید...">
+        <button class="send-btn" onclick="sendMessage()">ارسال</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            let userText = document.getElementById("user-input").value;
+            let chatBox = document.getElementById("chat-box");
+
+            if (userText.trim() === "") return;
+
+            // نمایش پیام کاربر
+            chatBox.innerHTML += "<p><strong>شما:</strong> " + userText + "</p>";
+
+            // درخواست به API ChatGPT
+            let response = await fetch("https://api.openai.com/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer YOUR_OPENAI_API_KEY"
+                },
+                body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    messages: [{ role: "user", content: userText }]
+                })
+            });
+
+            let data = await response.json();
+            let botReply = data.choices[0].message.content;
+
+            // نمایش پاسخ ربات
+            chatBox.innerHTML += "<p><strong>پرسان:</strong> " + botReply + "</p>";
+
+            document.getElementById("user-input").value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
     </script>
 </body>
 </html>
